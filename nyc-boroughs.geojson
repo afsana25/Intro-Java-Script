@@ -1,0 +1,95 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "borough": "Manhattan"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-74.0262, 40.6844],
+            [-73.9440, 40.6844],
+            [-73.9440, 40.8682],
+            [-74.0262, 40.8682],
+            [-74.0262, 40.6844]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "borough": "Brooklyn"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-73.9862, 40.5707],
+            [-73.8331, 40.5707],
+            [-73.8331, 40.7391],
+            [-73.9862, 40.7391],
+            [-73.9862, 40.5707]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "borough": "Queens"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-73.8352, 40.5774],
+            [-73.7004, 40.5774],
+            [-73.7004, 40.7661],
+            [-73.8352, 40.7661],
+            [-73.8352, 40.5774]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "borough": "Bronx"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-73.9339, 40.7850],
+            [-73.7654, 40.7850],
+            [-73.7654, 40.9176],
+            [-73.9339, 40.9176],
+            [-73.9339, 40.7850]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "borough": "Staten Island"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-74.2589, 40.4774],
+            [-74.0508, 40.4774],
+            [-74.0508, 40.6475],
+            [-74.2589, 40.6475],
+            [-74.2589, 40.4774]
+          ]
+        ]
+      }
+    }
+  ]
+}

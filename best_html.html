@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYC Poverty Choropleth Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #map {
+            height: 80vh;
+        }
+
+        .legend {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7;
+        }
+
+        .legend span {
+            line-height: 18px;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="map"></div>
+            </div>
+            <div class="col-md-4">
+                <div class="legend">
+                    <i style="background: #800026;"></i><span> >30%</span><br>
+                    <i style="background: #BD0026;"></i><span> 20-30%</span><br>
+                    <i style="background: #E31A1C;"></i><span> 10-20%</span><br>
+                    <i style="background: #FFEDA0;"></i><span> <10%</span><br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        const geojsonData = {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "properties": {"borough": "Manhattan"},
+                    "geometry": {
+                        "type": "Polygon",
+                        "coordinates": [
+                            [-74.026675, 40.683935],
+                            [-74.018592, 40.773841],
+                            [-73.971152, 40.879040],
+                            [-73.906650, 40.785320],
+                            [-74.026675, 40.683935]
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {"borough": "Brooklyn"},
+                    "geometry": {
+                        "type": "Polygon",
+                        "coordinates": [
+                            [-74.043752, 40.570550],
+                            [-73.933752, 40.570550],
+                            [-73.933752, 40.635550],
+                            [-74.043752, 40.635550],
+                            [-74.043752, 40.570550]
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {"borough": "Queens"},
+                    "geometry": {
+                        "type": "Polygon",
+                        "coordinates": [
+                            [-73.837100, 40.561590],
+                            [-73.825940, 40.738650],
+                            [-73.700180, 40.754530],
+                            [-73.700180, 40.561590],
+                            [-73.837100, 40.561590]
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {"borough": "Bronx"},
+                    "geometry": {
+                        "type": "Polygon",
+                        "coordinates": [
+                            [-73.922380, 40.785320],
+                            [-73.818070, 40.785320],
+                            [-73.818070, 40.883120],
+                            [-73.922380, 40.883120],
+                            [-73.922380, 40.785320]
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {"borough": "Staten Island"},
+                    "geometry": {
+                        "type": "Polygon",
+                        "coordinates": [
+                            [-74.246770, 40.485760],
+                            [-74.151470, 40.642890],
+                            [-74.034810, 40.613950],
+                            [-74.034810, 40.485760],
+                            [-74.246770, 40.485760]
+                        ]
+                    }
+                }
+            ]
+        };
+
+        const povertyData = {
+            "Manhattan": 15,
+            "Brooklyn": 20,
+            "Queens": 10,
+            "Bronx": 25,
+            "Staten Island": 12
+        };
+
+        const map = L.map('map').setView([40.7128, -74.0060], 10);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        L.geoJSON(geojsonData, {
+            style: (feature) => ({
+                fillColor: getColor(povertyData[feature.properties.borough]),
+                weight: 1,
+                opacity: 1,
+                color: 'white',
+                fillOpacity: 0.7,
+            }),
+            onEachFeature: (feature, layer) => {
+                layer.bindTooltip(`Borough: ${feature.properties.borough}<br> Poverty Rate: ${povertyData[feature.properties.borough]}%`, { sticky: true });
+            },
+        }).addTo(map);
+
+        function getColor(povertyRate) {
+            return povertyRate > 30 ? '#800026' :
+                   povertyRate > 20 ? '#BD0026' :
+                   povertyRate > 10 ? '#E31A1C' :
+                                      '#FFEDA0';
+        }
+    </script>
+</body>
+</html>
