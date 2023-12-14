@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choropleth Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="./ChoroplethMapStyles.css">
+</head>
+
+<p> <h1><div>Final Project, DHUM 70600, Intro to JavaScript</div></h1></p>
+<p> <h3><div>Afsana Mimi</div></h3></p>
+<body>
+<header> <p><h4>Summary of the Visualization: </h4> The visualization is created based on NYC 5 
+    boroughs' poverty rate in 2021 from US census data. The choropleth map presents that Bronx has highest provery rate, and Manhattan has lowest Proverty Rate. 
+    The visualization  created via JavaScript, leaflet.js, html, and css. The tooltip shows the poverty rate and median house Household income hovering over each boroughs, and the legend shows the poverty of rate based on the intensity of the colors.</p>
+    </header>
+
+    <div><p><h3>The Choropleth Map of NYC based on Poverty Rate</h3></p></div>
+    <div id="map" style="height: 80vh;"></div>
+
+    <div class="footer">
+        Map created by Afsana Mimi<br>
+        <h4>Source: 2021 Poverty and Median Household Income Estimates(Proverty Rate for all Age only(%) only) - Counties, States, and National
+            Source:  U.S. Census Bureau, Small Area Income and Poverty Estimates (SAIPE) Program
+            Release date:  December 2022 </h4> 
+        Data source: <a href="https://www.census.gov/data/datasets/2021/demo/saipe/2021-state-and-county.html">https://www.census.gov/data/datasets/2021/demo/saipe/2021-state-and-county.html</a>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="./ChoroplethMap.js"></script>
+</body>
+</html>
